@@ -66,6 +66,28 @@ router.put("/employees/:id", async (req, res, next) => {
   }
 });
 
+// router.put("employees/:id", async (req, res, next) => {
+//   try {
+//     const id = req.params.id;
+//     const { name } = req.body;
+//     const result = await prisma.user.update({
+//       where: {
+//         id,
+//       },
+//       data: {
+//         name,
+//       },
+//     });
+//     if (result) {
+//       res.status(200).json(result);
+//     } else {
+//       res.status(200).json("User not found");
+//     }
+//   } catch (error) {
+//     res.status(400).send(error);
+//   }
+// });
+
 router.post("/employees", async (req, res, next) => {
   const { name } = req.body;
   if (!name) {
@@ -82,7 +104,27 @@ router.post("/employees", async (req, res, next) => {
   }
 });
 
-router.delete("/:id", async (req, res, next) => {
+// router.delete("employees/:id", async (req, res, next) => {
+//   const { id } = req.params;
+
+//   try {
+//     // Check if the employee exists
+//     const employee = await prisma.employee.findUnique({ where: { id: +id } });
+//     if (!employee) {
+//       return next({
+//         status: 404,
+//         message: `Employee with id ${id} does not exist.`,
+//       });
+//     }
+
+//     // Delete the employee
+//     await prisma.employee.delete({ where: { id: +id } });
+//     res.sendStatus(204);
+//   } catch (e) {
+//     next(e);
+//   }
+// });
+router.delete("/employees/:id", async (req, res, next) => {
   const { id } = req.params;
 
   try {

@@ -2,8 +2,8 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 
-app.use("/", require("./api/employees"));
 app.use(express.json());
+app.use("/", require("./api/employees"));
 
 // Logging middleware
 app.use((req, res, next) => {
